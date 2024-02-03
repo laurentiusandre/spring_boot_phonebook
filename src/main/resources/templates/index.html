@@ -1,38 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
-    <div th:switch="${contacts}">
-        <h2 th:case="null">Add your first contact!</h2>
-        <div th:case="*">
-            <h2>Contacts</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Number</th>
-                    <th>Address</th>
-                    <th>Email</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="contact : ${contacts}">
-                    <td th:text="${contact.name}"></td>
-                    <td th:text="${contact.number}"></td>
-                    <td th:text="${contact.address}"></td>
-                    <td th:text="${contact.email}"></td>
-                    <td><a th:href="@{/update/{id}(id=${contact.id})}">Edit</a></td>
-                    <td><a th:href="@{/delete/{id}(id=${contact.id})}">Delete</a></td>
-                </tr>
-                </tbody>
-            </table>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Phonebook Home</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/main.css">
+    </head>
+    <body>
+        <div th:switch="${contacts}">
+            <h2 th:case="null">Add your first contact!</h2>
+            <div th:case="*">
+                <h2>Phonebook</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Number</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="contact : ${contacts}">
+                        <td th:text="${contact.name}"></td>
+                        <td th:text="${contact.number}"></td>
+                        <td th:text="${contact.address}"></td>
+                        <td th:text="${contact.email}"></td>
+                        <td><a class="btn btn-outline-secondary btn-sm" th:href="@{/update/{id}(id=${contact.id})}" role="button">Edit</a></td>
+                        <td><a class="btn btn-outline-danger btn-sm" th:href="@{/delete/{id}(id=${contact.id})}" role="button">Delete</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p><a class="btn btn-primary" href="/create" role="button">Add new contact</a></p>
         </div>
-        <p><a href="/create">Add a new contact</a></p>
-    </div>
-</body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </body>
 </html>
