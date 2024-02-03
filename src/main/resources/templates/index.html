@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <div th:switch="${contacts}">
+        <h2 th:case="null">Add your first contact!</h2>
+        <div th:case="*">
+            <h2>Contacts</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Number</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="contact : ${contacts}">
+                    <td th:text="${contact.name}"></td>
+                    <td th:text="${contact.number}"></td>
+                    <td th:text="${contact.address}"></td>
+                    <td th:text="${contact.email}"></td>
+                    <td><a th:href="@{/update/{id}(id=${contact.id})}">Edit</a></td>
+                    <td><a th:href="@{/delete/{id}(id=${contact.id})}">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <p><a href="/create">Add a new contact</a></p>
+    </div>
+</body>
+</html>
