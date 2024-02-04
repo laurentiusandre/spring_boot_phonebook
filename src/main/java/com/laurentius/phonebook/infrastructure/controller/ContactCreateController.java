@@ -1,5 +1,6 @@
-package com.laurentius.phonebook.infrastructure;
+package com.laurentius.phonebook.infrastructure.controller;
 
+import com.laurentius.phonebook.infrastructure.ContactRequestDto;
 import com.laurentius.phonebook.usecase.ContactCreateUseCase;
 import com.laurentius.phonebook.usecase.IContactResponseDto;
 import jakarta.validation.Valid;

@@ -1,4 +1,4 @@
-package com.laurentius.phonebook.infrastructure;
+package com.laurentius.phonebook.infrastructure.controller;
 
 import com.laurentius.phonebook.entity.Contact;
 import com.laurentius.phonebook.entity.ContactNotFoundException;
