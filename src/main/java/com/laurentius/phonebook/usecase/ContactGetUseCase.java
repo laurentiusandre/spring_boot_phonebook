@@ -4,6 +4,8 @@ import com.laurentius.phonebook.entity.Contact;
 import com.laurentius.phonebook.entity.ContactGateway;
 import com.laurentius.phonebook.entity.ContactNotFoundException;
 
+import java.util.List;
+
 public class ContactGetUseCase {
     private final ContactGateway gateway;
 
@@ -14,5 +16,9 @@ public class ContactGetUseCase {
     public Contact get(Long id) throws ContactNotFoundException {
         return this.gateway.findById(id)
                 .orElseThrow(ContactNotFoundException::new);
+    }
+
+    public List<Contact> getAll() {
+        return this.gateway.findAll();
     }
 }

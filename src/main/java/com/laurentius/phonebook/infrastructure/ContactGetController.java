@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/contact")
 public class ContactGetController {
@@ -21,5 +23,10 @@ public class ContactGetController {
     @GetMapping("/{id}")
     Contact get(@PathVariable Long id) throws ContactNotFoundException {
         return useCase.get(id);
+    }
+
+    @GetMapping
+    List<Contact> getAll() {
+        return useCase.getAll();
     }
 }
