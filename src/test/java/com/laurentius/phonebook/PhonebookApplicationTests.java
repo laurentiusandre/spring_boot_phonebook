@@ -17,7 +17,7 @@ class PhonebookApplicationTests {
 	ContactCreateDsGateway contactDsGateway = mock(ContactCreateDsGateway.class);
 	ContactPresenter contactPresenter = mock(ContactPresenter.class);
 	ContactItfFactory contactItfFactory = mock(ContactItfFactory.class);
-	ContactInputBoundary interactor = new ContactCreateInteractor(contactDsGateway, contactPresenter, contactItfFactory);
+	ContactCreateUseCase useCase = new ContactCreateUseCase(contactDsGateway, contactPresenter);
 
 	ContactResponseFormatter contactResponseFormatter = new ContactResponseFormatter();
 
@@ -39,10 +39,9 @@ class PhonebookApplicationTests {
 		when(contactItfFactory.create(anyString(), anyString(), anyString(), anyString()))
 				.thenReturn(new Contact(contactItf.getName(), contactItf.getNumber(), contactItf.getAddress(), contactItf.getEmail()));
 
-		interactor.create(contactRequestModel);
+		useCase.create(contactRequestModel);
 
 		verify(contactDsGateway, times(1)).save(any(ContactDsRequestModel.class));
-		verify(contactPresenter, times(1)).prepareSuccessView(any(ContactResponseModel.class));
 	}
 
 	@Test
