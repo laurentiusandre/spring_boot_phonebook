@@ -1,10 +1,7 @@
 package com.laurentius.phonebook.infrastructure;
 
 import com.laurentius.phonebook.entity.ContactGateway;
-import com.laurentius.phonebook.usecase.ContactCreateUseCase;
-import com.laurentius.phonebook.usecase.ContactGetUseCase;
-import com.laurentius.phonebook.usecase.ContactPresenter;
-import com.laurentius.phonebook.usecase.ContactUpdateUseCase;
+import com.laurentius.phonebook.usecase.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -29,5 +26,12 @@ public class MvcConfig {
         ContactGateway gateway = new ContactDatabaseGateway(repository);
         ContactPresenter contactPresenter = new ContactResponseFormatter();
         return new ContactUpdateUseCase(gateway, contactPresenter);
+    }
+
+    @Bean
+    public ContactDeleteUseCase contactDeleteUseCase(JpaContactRepository repository) {
+        ContactGateway gateway = new ContactDatabaseGateway(repository);
+        ContactPresenter contactPresenter = new ContactResponseFormatter();
+        return new ContactDeleteUseCase(gateway, contactPresenter);
     }
 }
