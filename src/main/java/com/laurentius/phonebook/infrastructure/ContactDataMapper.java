@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 public class ContactDataMapper {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name")
