@@ -3,6 +3,7 @@ package com.laurentius.phonebook;
 import com.laurentius.phonebook.entity.Contact;
 import com.laurentius.phonebook.entity.ContactGateway;
 import com.laurentius.phonebook.infrastructure.ContactRequestDto;
+import com.laurentius.phonebook.infrastructure.ContactResponseDto;
 import com.laurentius.phonebook.infrastructure.ContactResponseFormatter;
 import com.laurentius.phonebook.usecase.*;
 import org.junit.jupiter.api.Test;
@@ -13,9 +14,9 @@ import static org.mockito.Mockito.*;
 
 @SpringBootTest
 class PhonebookApplicationTests {
-	ContactGateway contactDsGateway = mock(ContactGateway.class);
+	ContactGateway contactGateway = mock(ContactGateway.class);
 	ContactPresenter contactPresenter = mock(ContactPresenter.class);
-	ContactCreateUseCase useCase = new ContactCreateUseCase(contactDsGateway, contactPresenter);
+	ContactCreateUseCase useCase = new ContactCreateUseCase(contactGateway, contactPresenter);
 
 	ContactResponseFormatter contactResponseFormatter = new ContactResponseFormatter();
 
@@ -30,14 +31,14 @@ class PhonebookApplicationTests {
 
 		useCase.create(contactRequestDto);
 
-		verify(contactDsGateway, times(1)).save(any(Contact.class));
+		verify(contactGateway, times(1)).save(any(Contact.class));
 	}
 
 	@Test
 	void testSuccessResponseFormatter() {
-		ContactResponseModel modelResponse = new ContactResponseModel("Andre", "2020-12-20T03:00:00.000");
-		ContactResponseModel formattedResponse = contactResponseFormatter.prepareSuccessView(modelResponse);
+		ContactResponseDto modelResponse = new ContactResponseDto("Andre", "2020-12-20T03:00:00.000");
+		IContactResponseDto formattedResponse = contactResponseFormatter.prepareSuccessView(modelResponse);
 
-		assertThat(formattedResponse.getCreatedDate()).isEqualTo("2020-12-20 03:00:00");
+		assertThat(formattedResponse.createdDate()).isEqualTo("2020-12-20 03:00:00");
 	}
 }

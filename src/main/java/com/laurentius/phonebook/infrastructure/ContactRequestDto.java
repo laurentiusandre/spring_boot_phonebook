@@ -1,6 +1,6 @@
 package com.laurentius.phonebook.infrastructure;
 
-import com.laurentius.phonebook.usecase.IContactDto;
+import com.laurentius.phonebook.usecase.IContactRequestDto;
 import jakarta.validation.constraints.NotBlank;
 
 public record ContactRequestDto(
@@ -9,4 +9,4 @@ public record ContactRequestDto(
     String number,
     String address,
     String email
-) implements IContactDto { }
+) implements IContactRequestDto { }

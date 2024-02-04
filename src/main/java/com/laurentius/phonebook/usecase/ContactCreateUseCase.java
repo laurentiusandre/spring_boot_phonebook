@@ -2,6 +2,7 @@ package com.laurentius.phonebook.usecase;
 
 import com.laurentius.phonebook.entity.Contact;
 import com.laurentius.phonebook.entity.ContactGateway;
+import com.laurentius.phonebook.infrastructure.ContactResponseDto;
 
 import java.time.LocalDateTime;
 
@@ -14,11 +15,11 @@ public class ContactCreateUseCase {
         this.contactPresenter = contactPresenter;
     }
 
-    public ContactResponseModel create(IContactDto requestModel) {
+    public IContactResponseDto create(IContactRequestDto requestModel) {
         LocalDateTime now = LocalDateTime.now();
-        Contact contactDsModel = new Contact(requestModel.name(), requestModel.number(), requestModel.address(), requestModel.email(), now);
-        gateway.save(contactDsModel);
+        Contact contact = new Contact(requestModel.name(), requestModel.number(), requestModel.address(), requestModel.email(), now);
+        gateway.save(contact);
 
-        return contactPresenter.prepareSuccessView(new ContactResponseModel(requestModel.name(), now.toString()));
+        return contactPresenter.prepareSuccessView(new ContactResponseDto(requestModel.name(), now.toString()));
     }
 }

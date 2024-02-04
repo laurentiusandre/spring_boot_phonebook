@@ -1,6 +1,6 @@
 package com.laurentius.phonebook.usecase;
 
-public interface IContactDto {
+public interface IContactRequestDto {
 
     String name();
 

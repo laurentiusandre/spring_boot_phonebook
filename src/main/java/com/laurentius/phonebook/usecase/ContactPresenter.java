@@ -1,7 +1,7 @@
 package com.laurentius.phonebook.usecase;
 
 public interface ContactPresenter {
-    ContactResponseModel prepareSuccessView(ContactResponseModel contact);
+    IContactResponseDto prepareSuccessView(IContactResponseDto contact);
 
-    ContactResponseModel prepareFailView(String error);
+    IContactResponseDto prepareFailView(String error);
 }
