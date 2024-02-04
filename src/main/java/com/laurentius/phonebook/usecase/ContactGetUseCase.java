@@ -21,4 +21,8 @@ public class ContactGetUseCase {
     public List<Contact> getAll() {
         return this.gateway.findAll();
     }
+
+    public List<Contact> search(String query) {
+        return this.gateway.findByNameContaining(query);
+    }
 }

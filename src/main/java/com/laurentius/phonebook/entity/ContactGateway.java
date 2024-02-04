@@ -10,4 +10,5 @@ public interface ContactGateway {
     void deleteById(Long id);
     Optional<Contact> findById(Long id);
     List<Contact> findAll();
+    List<Contact> findByNameContaining(String query);
 }

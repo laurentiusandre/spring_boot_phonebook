@@ -29,4 +29,9 @@ public class ContactGetController {
     List<Contact> getAll() {
         return useCase.getAll();
     }
+
+    @GetMapping("/search/{query}")
+    List<Contact> search(@PathVariable String query) {
+        return useCase.search(query);
+    }
 }

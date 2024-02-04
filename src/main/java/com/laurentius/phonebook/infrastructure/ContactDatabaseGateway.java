@@ -42,4 +42,12 @@ public class ContactDatabaseGateway implements ContactGateway {
                 .map(ContactDataMapper::toContact)
                 .toList();
     }
+
+    @Override
+    public List<Contact> findByNameContaining(String query) {
+        return repository.findByNameContaining(query)
+                .stream()
+                .map(ContactDataMapper::toContact)
+                .toList();
+    }
 }

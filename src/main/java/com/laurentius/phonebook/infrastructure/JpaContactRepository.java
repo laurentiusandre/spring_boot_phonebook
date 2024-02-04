@@ -12,4 +12,5 @@ public interface JpaContactRepository extends JpaRepository<ContactDataMapper, L
     List<ContactDataMapper> findAll();
     List<ContactDataMapper> findByName(final String name);
     List<ContactDataMapper> findByNumber(final String number);
+    List<ContactDataMapper> findByNameContaining(final String number);
 }
