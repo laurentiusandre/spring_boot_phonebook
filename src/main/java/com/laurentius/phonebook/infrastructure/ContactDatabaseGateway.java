@@ -21,7 +21,7 @@ public class ContactDatabaseGateway implements ContactGateway {
 
     @Override
     public void save(Contact requestModel) {
-        ContactDataMapper contactDataMapper = new ContactDataMapper(requestModel.getName(), requestModel.getNumber(), requestModel.getAddress(), requestModel.getEmail());
+        ContactDataMapper contactDataMapper = new ContactDataMapper(requestModel.getId(), requestModel.getName(), requestModel.getNumber(), requestModel.getAddress(), requestModel.getEmail());
         repository.save(contactDataMapper);
     }
 

@@ -1,5 +1,6 @@
 package com.laurentius.phonebook.infrastructure.controller;
 
+import com.laurentius.phonebook.entity.ContactNotFoundException;
 import com.laurentius.phonebook.infrastructure.ContactRequestDto;
 import com.laurentius.phonebook.usecase.ContactUpdateUseCase;
 import com.laurentius.phonebook.usecase.IContactResponseDto;
@@ -17,7 +18,7 @@ public class ContactUpdateController {
     }
 
     @PutMapping("/{id}")
-    IContactResponseDto update(@PathVariable Long id, @Valid @RequestBody ContactRequestDto requestModel) {
+    IContactResponseDto update(@PathVariable Long id, @Valid @RequestBody ContactRequestDto requestModel) throws ContactNotFoundException {
         return useCase.update(id, requestModel);
     }
 }

@@ -18,7 +18,7 @@ public class ContactCreateUseCase {
     public IContactResponseDto create(IContactRequestDto requestModel) {
         LocalDateTime now = LocalDateTime.now();
         Contact contact = new Contact(requestModel.name(), requestModel.number(), requestModel.address(), requestModel.email(), now);
-        gateway.save(contact);
+        this.gateway.save(contact);
 
         return contactPresenter.prepareSuccessView(new ContactResponseDto(requestModel.name(), now.toString()));
     }
