@@ -1,8 +1,9 @@
-package com.laurentius.phonebook.usecase;
+package com.laurentius.phonebook.infrastructure;
 
+import com.laurentius.phonebook.usecase.IContactDto;
 import jakarta.validation.constraints.NotBlank;
 
-public record ContactRequestModel(
+public record ContactRequestDto(
 
     @NotBlank String name,
     String number,

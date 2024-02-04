@@ -1,5 +1,6 @@
-package com.laurentius.phonebook.interfaceadapter;
+package com.laurentius.phonebook.infrastructure;
 
+import com.laurentius.phonebook.entity.Contact;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -102,6 +103,17 @@ public class ContactDataMapper {
                 ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    public Contact toContact() {
+        return new Contact(
+                this.getId(),
+                this.getName(),
+                this.getNumber(),
+                this.getAddress(),
+                this.getEmail(),
+                LocalDateTime.now()
+        );
     }
 }
 

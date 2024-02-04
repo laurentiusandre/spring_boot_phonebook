@@ -1,7 +1,6 @@
-package com.laurentius.phonebook.interfaceadapter;
+package com.laurentius.phonebook.infrastructure;
 
 import com.laurentius.phonebook.usecase.ContactCreateUseCase;
-import com.laurentius.phonebook.usecase.ContactRequestModel;
 import com.laurentius.phonebook.usecase.ContactResponseModel;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +19,7 @@ public class ContactCreateController {
     }
 
     @PostMapping
-    ContactResponseModel create(@Valid @RequestBody ContactRequestModel requestModel) {
+    ContactResponseModel create(@Valid @RequestBody ContactRequestDto requestModel) {
         return useCase.create(requestModel);
     }
 }

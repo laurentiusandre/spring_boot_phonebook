@@ -1,7 +1,5 @@
 package com.laurentius.phonebook.usecase;
 
-import java.time.LocalDateTime;
-
 public class ContactResponseModel {
 
     private String name;

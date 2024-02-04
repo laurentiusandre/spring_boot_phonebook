@@ -1,24 +1,17 @@
 package com.laurentius.phonebook.entity;
 
-import com.laurentius.phonebook.util.StringUtil;
+import java.time.LocalDateTime;
 
-public class Contact implements ContactItf {
+public class Contact {
 
     private Long id;
     private String name;
     private String number;
     private String address;
     private String email;
+    private LocalDateTime createdDate;
 
     public Contact() {
-    }
-
-    public Contact(Long id, String name, String number, String address, String email) {
-        this.id = id;
-        this.name = name;
-        this.number = number;
-        this.address = address;
-        this.email = email;
     }
 
     public Contact(String name, String number, String address, String email) {
@@ -26,6 +19,23 @@ public class Contact implements ContactItf {
         this.number = number;
         this.address = address;
         this.email = email;
+    }
+
+    public Contact(String name, String number, String address, String email, LocalDateTime createdDate) {
+        this.name = name;
+        this.number = number;
+        this.address = address;
+        this.email = email;
+        this.createdDate = createdDate;
+    }
+
+    public Contact(Long id, String name, String number, String address, String email, LocalDateTime createdDate) {
+        this.id = id;
+        this.name = name;
+        this.number = number;
+        this.address = address;
+        this.email = email;
+        this.createdDate = createdDate;
     }
 
     public Long getId() {
@@ -36,13 +46,12 @@ public class Contact implements ContactItf {
         this.id = id;
     }
 
-    @Override
-    public boolean nameIsValid() {
-        return !StringUtil.isBlank(name);
-    }
-
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getNumber() {
@@ -69,19 +78,11 @@ public class Contact implements ContactItf {
         this.email = email;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
     }
 
-    @Override
-    public String toString() {
-        return "Contact{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", number='" + number + '\'' +
-                ", address='" + address + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 }
-

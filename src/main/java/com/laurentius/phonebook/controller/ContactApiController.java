@@ -1,7 +1,7 @@
 package com.laurentius.phonebook.controller;
 
-import com.laurentius.phonebook.interfaceadapter.ContactDataMapper;
-import com.laurentius.phonebook.interfaceadapter.JpaContactRepository;
+import com.laurentius.phonebook.infrastructure.ContactDataMapper;
+import com.laurentius.phonebook.infrastructure.JpaContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

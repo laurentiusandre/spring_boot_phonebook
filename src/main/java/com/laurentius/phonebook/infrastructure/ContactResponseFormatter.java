@@ -1,4 +1,4 @@
-package com.laurentius.phonebook.interfaceadapter;
+package com.laurentius.phonebook.infrastructure;
 
 import com.laurentius.phonebook.usecase.ContactPresenter;
 import com.laurentius.phonebook.usecase.ContactResponseModel;
